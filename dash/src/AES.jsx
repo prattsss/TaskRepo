@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CryptoJS from "crypto-js";
-
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 const AES_KEY = "my-secret-key-12345"; // Use a secure key in production
 
 export default function AES() {
@@ -24,19 +25,21 @@ export default function AES() {
   };
 
   return (
-    <div>
-      <input
+    <div className="flex flex-col justify-center items-center gap-4">
+    <div className="flex gap-4">
+    <Input
         type="text"
         placeholder="Enter text to encrypt"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={encryptText}>Encrypt</button>
+      <Button onClick={encryptText}>Encrypt</Button>
+    </div>
 
       {encryptedText && (
-        <div>
+        <div className="flex-cpl justify-center items-center gap-4">
           <p>Encrypted: {encryptedText}</p>
-          <button onClick={decryptText}>Decrypt</button>
+          <Button onClick={decryptText}>Decrypt</Button>
         </div>
       )}
 
