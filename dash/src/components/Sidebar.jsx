@@ -1,26 +1,46 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, ChevronLeft, ChevronRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { Label } from "@/components/ui/label";
+export default function Sidebar({ toggleForm }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
-export default function Sidebar() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const openForm = () => {
+    toggleForm()
+    setIsFormOpen(!isFormOpen);
+  };
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <div className={`h-screen bg-gray-800 text-white ${isCollapsed ? "w-16" : "w-60"} transition-all duration-300`}>
-      <div className="p-4 flex items-center justify-between">
-        {!isCollapsed && <span className="text-lg font-bold">My App</span>}
-        <button onClick={() => setIsCollapsed(!isCollapsed)} className="text-white">
-          {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
+    <>
+      <div className="absolute top-7 left-6">
+        <button className="text-gray-800" onClick={() => setIsOpen(!isOpen)}>
+          <Menu size={28} />
         </button>
       </div>
-      <nav className="flex flex-col gap-4 p-4">
-        <Link to="/step-1" className="hover:bg-gray-700 p-2 rounded-md flex items-center gap-2">
-          <Menu size={20} /> {!isCollapsed && "Step 1"}
-        </Link>
-        <Link to="/step-2" className="hover:bg-gray-700 p-2 rounded-md flex items-center gap-2">
-          <Menu size={20} /> {!isCollapsed && "Step 2"}
-        </Link>
-      </nav>
-    </div>
+
+      {/* Sidebar */}
+      <div className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-4 shadow-lg transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-64"}`}>
+        {/* Close Button */}
+        <button className="absolute top-4 right-4 text-white" onClick={() => setIsOpen(false)}>
+          <X size={28} />
+        </button>
+
+        <h2 className="text-xl font-bold mb-6">Menu</h2>
+
+        {/* Open Form Button */}
+        <Label
+          onClick={openForm}
+          className="bg-blue-500 text-white px-4 py-2 w-full rounded-md"
+        >
+          {isFormOpen ? "Close Form" : "Open Form"}
+        </Label>
+
+      </div>
+    </>
   );
 }
+
+

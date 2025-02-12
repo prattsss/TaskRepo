@@ -1,6 +1,36 @@
 {
   "users": [
-    { "id": 1, "username": "admin", "password": "adminpass", "role": "admin" },
-    { "id": 2, "username": "user", "password": "userpass", "role": "user" }
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "adminpass",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "username": "user",
+      "password": "userpass",
+      "role": "user"
+    },
+    {
+      "id": "07ad",
+      "name": "asdf",
+      "email": "hello.vyaskrati@gmail.com"
+    },
+    {
+      "id": "63ca",
+      "name": "Prattush vyas",
+      "email": "email@gmail.com"
+    },
+    {
+      "id": "8c13",
+      "name": "Prattush vyas",
+      "email": "email@gmail.com"
+    },
+    {
+      "name": "Prattush vyas",
+      "email": "abvc",
+      "id": "5af3"
+    }
   ]
 }

@@ -10,8 +10,13 @@ export default function AES() {
   const [decryptedText, setDecryptedText] = useState("");
 
   const encryptText = () => {
+  if(text === ""){
+    alert("write na")
+  }
+  else{
     const encrypted = CryptoJS.AES.encrypt(text, AES_KEY).toString();
     setEncryptedText(encrypted);
+  }
   };
 
   const decryptText = () => {
@@ -25,7 +30,7 @@ export default function AES() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-4">
+    <div className="flex flex-col justify-center items-center gap-4 mt-20">
     <div className="flex gap-4">
     <Input
         type="text"
